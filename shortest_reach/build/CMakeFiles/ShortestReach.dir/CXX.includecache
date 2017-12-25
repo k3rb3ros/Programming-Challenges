@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/k3rb3ros/projects/Codeing_Practice/shortest_reach/shortest_reach.cpp
+exception
+-
+iostream
+-
+map
+-
+queue
+-
+stdint.h
+-
+string
+-
+tuple
+-
+vector
+-
+

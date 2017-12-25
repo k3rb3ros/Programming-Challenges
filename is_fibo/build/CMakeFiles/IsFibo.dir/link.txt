@@ -1,0 +1,1 @@
+/usr/bin/clang++    -std=c++11 -Wall -Wextra -pedantic -g -g    CMakeFiles/IsFibo.dir/is_fibo.cpp.o  -o IsFibo -rdynamic 

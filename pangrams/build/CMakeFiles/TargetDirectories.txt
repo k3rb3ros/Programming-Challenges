@@ -1,0 +1,1 @@
+/home/k3rb3ros/projects/Codeing_Practice/pangrams/build/CMakeFiles/Pangrams.dir

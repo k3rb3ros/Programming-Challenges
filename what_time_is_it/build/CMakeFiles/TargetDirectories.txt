@@ -1,0 +1,1 @@
+/home/k3rb3ros/projects/Codeing_Practice/what_time_is_it/build/CMakeFiles/Practice.dir

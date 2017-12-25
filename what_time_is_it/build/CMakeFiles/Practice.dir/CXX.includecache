@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/k3rb3ros/projects/Codeing_Practice/what_time_is_it/main.cpp
+cmath
+-
+iomanip
+-
+iostream
+-
+fstream
+-
+limits
+-
+string
+-
+sstream
+-
+stdint.h
+-
+

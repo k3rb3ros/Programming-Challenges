@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/k3rb3ros/projects/Codeing_Practice/maximum_subarray/maximum_subarray.cpp
+exception
+-
+iostream
+-
+map
+-
+stdint.h
+-
+vector
+-
+

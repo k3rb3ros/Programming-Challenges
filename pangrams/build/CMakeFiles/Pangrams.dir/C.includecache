@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/k3rb3ros/projects/Codeing_Practice/pangrams/pangrams.c
+stdbool.h
+-
+stdint.h
+-
+stdio.h
+-
+string.h
+-
+

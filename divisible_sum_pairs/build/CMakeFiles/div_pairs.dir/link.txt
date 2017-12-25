@@ -1,0 +1,1 @@
+/usr/bin/clang++    -std=c++11 -Wall -Wextra -pedantic -g -g    CMakeFiles/div_pairs.dir/divisible_sum_pairs.cpp.o  -o div_pairs -rdynamic 

@@ -1,0 +1,1 @@
+/usr/bin/clang++    -std=c++11 -Wall -Wextra -pedantic -g -g    CMakeFiles/a_very_big_sum.dir/sum.cpp.o  -o a_very_big_sum -rdynamic 

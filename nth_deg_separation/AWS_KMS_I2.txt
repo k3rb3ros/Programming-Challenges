@@ -1,0 +1,32 @@
+/*
+Six degrees of separation is the theory that everyone and everything is six or fewer steps away, by way of introduction, from any other person in the world, so that a chain of "a friend of a friend" statements can be made to connect any two people in a maximum of six steps.
+
+Let's have a look at Hollywood actors. Two actors are related if they played in the same movie. Find the degree of separation for any two given actors in your database.
+
+
+Example
+- Angelina Jollie: Mr. and Mrs. Smith, Salt
+- Brad Pitt: Mr. and Mrs. Smith, Haloween Joke
+- Jake Jim: Haloween Joke
+- Graham Bell: Electric Light
+
+getMoviesForActor("Angelina Jolie"); // returns ["Mr. and Mrs. Smith", "Salt"]
+getActorsInMovie("Mr. and Mrs. Smith"); // returns ["Angelina Jolie", "Brad Pitt"]
+
+The degree of separation between "Angelina Jollie" and "Jake Jim" is 2 because the simplest connection between the two actors contains two relationships through movies "Mr. and Mrs. Smith" and "Haloween Joke".
+
+The degree of separation between "Graham Bell" and "Jake Jim" is "-1" because they are not connected. -1 is simply a special value that represents there is no connection.
+
+Assumptions:
+- all actor names are unique
+- all movie names are unique
+
+You’re given the following API from your movie database (e.g., IMDB):
+
+List<String> getMoviesForActor(String actorName)
+List<String> getActorsInMovie(String movieName)
+
+Implement the following method using the API's above:
+
+int getDegreeOfSeperation(String actor1, String actor2);
+*/

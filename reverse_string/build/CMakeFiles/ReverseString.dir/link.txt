@@ -1,0 +1,1 @@
+/usr/bin/clang++    -std=c++11 -Wall -Wextra -pedantic -g -g    CMakeFiles/ReverseString.dir/reverse_string.cpp.o  -o ReverseString -rdynamic 

@@ -1,0 +1,1 @@
+/usr/bin/clang++    -std=c++11 -Wall -Wextra -pedantic -g -g    CMakeFiles/Most_Common_Subnets.dir/most_common_subnet.cpp.o  -o Most_Common_Subnets -rdynamic 
