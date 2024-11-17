@@ -169,8 +169,40 @@ void print_tree(b_tree_t* tree) {
 	matched_nodes = NULL;
 }
 
-void b_tree_insert(const b_tree_t* tree, b_node_t* node, const node_data_t key) {
+void b_tree_insert(b_tree_t* tree, const node_data_t key) {
+	// operations not defined if tree not inited
+	if (tree != NULL) {
+		// Root full tree grows in height
+		if (is_b_tree_node_full(tree->root))
+		{
+			b_node_t* new_root = b_tree_get_new_node(tree);
+			b_node_t* old_root = tree->root;
 
+			// make old root child of new root
+			old_root->depth++;
+			new_root->next[0] = tree->root;
+
+			// Split the old root and move 1 key to the new root
+			b_tree_split_child(tree, old_root, 0);
+
+			// New root has two children now. Decide which of the
+			// two children is going to have new key
+			ssize_t i=0;
+			if (new_root->keys[i] < key) {
+				i++;
+			}
+			assert(new_root->keys[i] != DATA_NULL);
+			b_node_t* insert_tgt = new_root->next[i];
+			b_tree_insert_not_full(insert_tgt, key);
+
+			// update root
+			tree->root = new_root;
+		}
+		// root not full so just insert in root
+		else {
+			b_tree_insert_not_full(tree->root, key);
+		}
+	}
 }
 
 b_node_t* b_tree_search(b_node_t* node, const node_data_t key) {

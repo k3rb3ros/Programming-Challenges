@@ -62,11 +62,7 @@ static inline bool compare_data(const node_data_t a, const node_data_t b) {
 * tree operations *
 ******************/
 
-void b_tree_insert(const b_tree_t* tree, b_node_t* node, const node_data_t key);
-
-void b_tree_insert_not_full(b_node_t* node, const node_data_t key);
-
-void b_tree_split_child(const b_tree_t* tree, b_node_t* node);
+void b_tree_insert(b_tree_t* tree, const node_data_t key);
 
 b_node_t* b_tree_search(b_node_t* node, const node_data_t key);
 
@@ -117,6 +113,22 @@ static inline bool is_b_tree_node_empty(const b_node_t* node) {
     is_empty = node->depth > DEPTH_NULL ? false : is_empty;
     return is_empty;
 }
+
+// TODO consider optimizing this to just check the rightmost key
+static inline bool is_b_tree_node_full(const b_node_t* node) {
+    for (ssize_t s=(MAX_KEYS-1); s>=0; --s) {
+        if (node->keys[s] != DATA_NULL) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+void b_tree_insert_not_full(b_node_t* node, const node_data_t key);
+
+// Note: that node must be full when this function is called
+void b_tree_split_child(const b_tree_t* tree, b_node_t* node, const ssize_t ind_to_split_on);
 
 void print_tree(b_tree_t* n);
 
