@@ -26,12 +26,14 @@
 
 typedef int32_t node_data_t;
 typedef struct b_node_s b_node_t;
+typedef struct b_tree_s b_tree_t;
 
 /* node structure is such that
 * data[0] < next[0]->keys || next[0]->keys == NULL
 * next[0]->keys < data[1] < next[1]->keys || next[1]->keys == NULL
 */
 
+// represents a b-tree node
 struct b_node_s {
 	node_data_t keys[MAX_KEYS];
 	ssize_t num_keys;
@@ -39,6 +41,13 @@ struct b_node_s {
 	ssize_t depth;
 };
 
+// represents overall b-tree structure (must be initialized and freed)
+struct b_tree_s {
+    b_node_t* root;
+    size_t nodes_in_use;
+    size_t max_nodes;
+    b_node_t* next_available;
+};
 
 /*************
 * comparator *
@@ -53,17 +62,28 @@ static inline bool compare_data(const node_data_t a, const node_data_t b) {
 * tree operations *
 ******************/
 
-void b_tree_insert(b_node_t* node, const node_data_t key);
+void b_tree_insert(const b_tree_t* tree, b_node_t* node, const node_data_t key);
 
 void b_tree_insert_not_full(b_node_t* node, const node_data_t key);
 
-void b_tree_split_child(b_node_t* node);
+void b_tree_split_child(const b_tree_t* tree, b_node_t* node);
 
 b_node_t* b_tree_search(b_node_t* node, const node_data_t key);
 
 void b_tree_traverse(const b_node_t* node);
 
-void b_tree_delete(b_node_t* node, const node_data_t key);
+void b_tree_delete(const b_tree_t* tree, b_node_t* node, const node_data_t key);
+
+
+/******************
+* tree management *
+******************/
+
+b_tree_t b_tree_init(void);
+
+b_node_t* b_tree_get_new_node(b_tree_t* tree);
+
+void b_tree_free(b_tree_t* tree);
 
 
 /**********
@@ -98,6 +118,6 @@ static inline bool is_b_tree_node_empty(const b_node_t* node) {
     return is_empty;
 }
 
-void print_tree(b_node_t* n);
+void print_tree(b_tree_t* n);
 
 #endif
