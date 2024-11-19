@@ -11,6 +11,8 @@
 
 // TODO refine these constants
 #define MAX_KEYS 4
+// T should favor splitting with 1 more element in the right node
+#define T (3)
 #define DATA_NULL -1
 #define DEPTH_NULL -1
 
@@ -44,9 +46,10 @@ struct b_node_s {
 // represents overall b-tree structure (must be initialized and freed)
 struct b_tree_s {
     b_node_t* root;
+    b_node_t* nodes;
+    b_node_t* next_available;
     size_t nodes_in_use;
     size_t max_nodes;
-    b_node_t* next_available;
 };
 
 /*************
@@ -117,7 +120,7 @@ static inline bool is_b_tree_node_empty(const b_node_t* node) {
 // TODO consider optimizing this to just check the rightmost key
 static inline bool is_b_tree_node_full(const b_node_t* node) {
     for (ssize_t s=(MAX_KEYS-1); s>=0; --s) {
-        if (node->keys[s] != DATA_NULL) {
+        if (node->keys[s] == DATA_NULL) {
             return false;
         }
     }
@@ -125,10 +128,14 @@ static inline bool is_b_tree_node_full(const b_node_t* node) {
     return true;
 }
 
-void b_tree_insert_not_full(b_node_t* node, const node_data_t key);
+void b_tree_insert_not_full(b_tree_t* tree, b_node_t* node, const node_data_t key);
 
 // Note: that node must be full when this function is called
-void b_tree_split_child(const b_tree_t* tree, b_node_t* node, const ssize_t ind_to_split_on);
+void b_tree_split_child(
+    b_tree_t* tree,
+    b_node_t* parent,
+    b_node_t* child,
+    const ssize_t ind_to_split_on);
 
 void print_tree(b_tree_t* n);
 
